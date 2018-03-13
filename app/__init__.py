@@ -25,7 +25,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 #        session['user_id'] = None
 
 
-from app.views import default, music, ion, tests
+from app.views import default, music, ion, tests, images
 #from app.linker import linker
 #from app.users import users
 #from app.mm import mm
@@ -35,6 +35,7 @@ app.register_blueprint(default)
 app.register_blueprint(music)
 app.register_blueprint(ion)
 app.register_blueprint(tests)
+app.register_blueprint(images)
 #app.register_blueprint(ion)
 
 from app import views

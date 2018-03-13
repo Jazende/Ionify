@@ -9,8 +9,17 @@ music = Blueprint('songs', __name__)
 default = Blueprint('default', __name__)
 ion = Blueprint('ion', __name__)
 tests = Blueprint('tests', __name__)
+images = Blueprint('images', __name__)
 
 conn = engine.connect()
+
+@images.route('/', subdomain="images")
+def index():
+    images = []
+    with open(r'/home/python/ionify/images/imgs.txt', 'r') as i:
+        for line in i:
+            images.append(line.strip().split(" ")[0])
+    return "<b>List Images</b><br/>" + "<br/>".join(sorted(images))
 
 @tests.route('/songs', subdomain="tests")
 def tests_songs():
@@ -61,4 +70,7 @@ def show(page):
 def ion_reroute(page):
     if page == 'songs':
         return redirect(url_for('songs.show'))
-    return redirect(url_for('default.index'))
+    elif page == 'images':
+        return "Coming soon in a shitty coded website near you."
+    else:
+        return redirect(url_for('default.index'))
