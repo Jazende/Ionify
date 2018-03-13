@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block script %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }}</script>
+<script>
+function queueSong(song_id) {
+     $.ajax({
+       url: 'http://songs.kridder.eu/_json_queue_song',
+       type: 'POST',
+       contentType: 'application/json',
+       data: JSON.stringify(song_id),
+       dataType:'json'
+});
+}
+</script>
+{% endblock %}
+{% block body %}
+<table>
+<tr><th align="right">Number</th><th align="center">Queue</th><th align="left">Name</th></tr>
+{% for song in songs %}
+<tr><td align="right">{{ song[0] }}</td><td><button type="submit" onclick="queueSong({{song[0]}})">Queue</button></td><td align="left">{{ song[1] }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,12 @@
+<html>
+<head>
+<link rel="shortcut icon" href="{{ url_for('songs.show', page="favicon.ico") }}">
+{% if title %}<title>{{ title }}</title>{% endif %}
+{% block script %}{% endblock %}
+</head>
+<body>
+{% block navigation %}<table><tr><td><a href="{{url_for('songs.show')}}">List</a></td>
+<td><a href="{{url_for('songs.show', page="queue")}}">Queue</a></td></tr></table>{% endblock %}
+{% block body %}{% endblock %}
+</body>
+</html>

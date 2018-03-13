@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block body %}
+<table><tr><th>Queue<th></tr>
+{% for song in queue %}
+<tr><td>{{ song }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}
