@@ -19,7 +19,9 @@ def index():
     with open(r'/home/python/ionify/images/imgs.txt', 'r') as i:
         for line in i:
             images.append(line.strip().split(" ")[0])
-    return "<b>List Images</b><br/>" + "<br/>".join(sorted(images))
+    images = sorted(images)
+    return render_template('images_overview.html', images = images, title="Images")
+#    return "<b>List Images</b><br/>" + "<br/>".join(sorted(images))
 
 @tests.route('/songs', subdomain="tests")
 def tests_songs():
