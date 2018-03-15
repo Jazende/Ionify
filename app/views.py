@@ -18,7 +18,7 @@ def index():
     images = []
     with open(r'/home/python/ionify/images/imgs.txt', 'r') as i:
         for line in i:
-            images.append(line.strip().split(" ")[0])
+            images.append(line.strip().split(" ")[0].lower())
     images = sorted(images)
     return render_template('images_overview.html', images = images, title="Images")
 #    return "<b>List Images</b><br/>" + "<br/>".join(sorted(images))
